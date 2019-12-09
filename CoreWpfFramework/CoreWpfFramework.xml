@@ -1,0 +1,447 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoreWpfFramework</name>
+    </assembly>
+    <members>
+        <member name="P:WpfFramework.Behaviors.NumericTextBoxBehavior.SpaceKeyBinding">
+            <summary>
+            SpaceCommand無効
+            </summary>
+        </member>
+        <member name="P:WpfFramework.Behaviors.NumericTextBoxBehavior.ShiftSpaceKeyBinding">
+            <summary>
+            ShiftSpaceCommand無効
+            </summary>
+        </member>
+        <member name="P:WpfFramework.Behaviors.NumericTextBoxBehavior.PasteCommandBinding">
+            <summary>
+            Paste 数字のみ有効
+            </summary>
+        </member>
+        <member name="T:WpfFramework.ValueConverters.BooleanInvertConverter">
+            <summary>
+            Bool値を逆転します。
+            </summary>
+        </member>
+        <member name="M:WpfFramework.ValueConverters.BooleanInvertConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            bool値を逆転します
+            </summary>
+            <param name="value">バインディング ソースによって生成された値。</param>
+            <param name="targetType">バインディング ターゲット プロパティの型。</param>
+            <param name="parameter">使用するコンバーター パラメーター。</param>
+            <param name="culture">コンバーターで使用するカルチャ。</param>
+            <returns>valueがtrueならfalse,falseならtrueを返します</returns>
+        </member>
+        <member name="M:WpfFramework.ValueConverters.BooleanInvertConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            bool値を逆転します
+            </summary>
+            <param name="value">バインディング ターゲットによって生成された値。</param>
+            <param name="targetType">変換後の型。</param>
+            <param name="parameter">使用するコンバーター パラメーター。</param>
+            <param name="culture">コンバーターで使用するカルチャ。</param>
+            <returns>valueがtrueならfalse,falseならtrueを返します</returns>
+        </member>
+        <member name="T:WpfFramework.ValueConverters.BooleanToVisibleHiddenConverter">
+            <summary>
+            ブール値をSystem.Windows.VisibilityのVisible/Hiddenに変換します
+            </summary>
+        </member>
+        <member name="M:WpfFramework.ValueConverters.BooleanToVisibleHiddenConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            ブール値をSystem.Windows.VisibilityのVisible/Hiddenに変換します
+            </summary>
+            <param name="value">変換するブール値。</param>
+            <param name="targetType">バインディング ターゲット プロパティの型。</param>
+            <param name="parameter">使用するコンバーター パラメーター。</param>
+            <param name="culture">コンバーターで使用するカルチャ。</param>
+            <returns>valueがtrueの時Visibility.Visible,valueがfalseの時Visibility.Hidden</returns>
+        </member>
+        <member name="M:WpfFramework.ValueConverters.BooleanToVisibleHiddenConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            System.Windows.Visibilityをboolに変換します
+            </summary>
+            <param name="value">System.Windows.Visibility 列挙値</param>
+            <param name="targetType">変換後の型。</param>
+            <param name="parameter">使用するコンバーター パラメーター。</param>
+            <param name="culture">コンバーターで使用するカルチャ。</param>
+            <returns>Visibility.Visibleであればtrue,それ以外ならfalse</returns>
+        </member>
+        <member name="T:CoreWpfFramework.Commands.IDelegateCommand">
+            <summary>
+            DelegateCommandのインターフェース
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Commands.IDelegateCommand.CallCanExecuteChanged">
+            <summary>
+            CanExecuteChangedを発火する
+            </summary>
+        </member>
+        <member name="T:CoreWpfFramework.Commands.DelegateCommand`1">
+            <summary>
+            DelegateCommand パラメータの型指定版
+            </summary>
+            <typeparam name="T">コマンドに渡すパラメータの型</typeparam>
+        </member>
+        <member name="M:CoreWpfFramework.Commands.DelegateCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean})">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="execute">コマンドが起動される際に呼び出すメソッド</param>
+            <param name="canExecute">現在の状態でコマンドが実行可能かどうかを決定するメソッド</param>
+        </member>
+        <member name="E:CoreWpfFramework.Commands.DelegateCommand`1.CanExecuteChanged">
+            <summary>
+            コマンドを実行するかどうかに影響するような変更があった場合に発生します。
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Commands.DelegateCommand`1.CallCanExecuteChanged">
+            <summary>
+            CanExecuteChangedを発生させます。
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Commands.DelegateCommand`1.CanExecute(System.Object)">
+            <summary>
+            現在の状態でコマンドが実行可能かどうかを決定するメソッドを定義します。
+            </summary>
+            <param name="parameter">
+            コマンドにより使用されるデータです。
+            コマンドにデータを渡す必要がない場合は、このオブジェクトを null に設定できます。</param>
+            <returns>このコマンドを実行できる場合は、true。それ以外の場合は、false。</returns>
+        </member>
+        <member name="M:CoreWpfFramework.Commands.DelegateCommand`1.Execute(System.Object)">
+            <summary>
+            コマンドが起動される際に呼び出すメソッドを定義します。
+            </summary>
+            <param name="parameter">
+            コマンドにより使用されるデータです。 
+            コマンドにデータを渡す必要がない場合は、このオブジェクトを null に設定できます。
+            </param>
+        </member>
+        <member name="T:CoreWpfFramework.Commands.DelegateCommand">
+            <summary>
+            DelegateCommand
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Commands.DelegateCommand.#ctor(System.Action{System.Object},System.Func{System.Object,System.Boolean})">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="execute">コマンドが起動される際に呼び出すメソッド</param>
+            <param name="canExecute">現在の状態でコマンドが実行可能かどうかを決定するメソッド</param>
+        </member>
+        <member name="M:CoreWpfFramework.Commands.DelegateCommand.CanExecute(System.Object)">
+            <summary>
+            現在の状態でコマンドが実行可能かどうかを決定するメソッドを定義します。
+            </summary>
+            <param name="parameter">
+            コマンドにより使用されるデータです。
+            コマンドにデータを渡す必要がない場合は、このオブジェクトを null に設定できます。</param>
+            <returns>このコマンドを実行できる場合は、true。それ以外の場合は、false。</returns>
+        </member>
+        <member name="M:CoreWpfFramework.Commands.DelegateCommand.Execute(System.Object)">
+            <summary>
+            コマンドが起動される際に呼び出すメソッドを定義します。
+            </summary>
+            <param name="parameter">
+            コマンドにより使用されるデータです。 
+            コマンドにデータを渡す必要がない場合は、このオブジェクトを null に設定できます。
+            </param>
+        </member>
+        <member name="E:CoreWpfFramework.Commands.DelegateCommand.CanExecuteChanged">
+            <summary>
+            コマンドを実行するかどうかに影響するような変更があった場合に発生します。
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Commands.DelegateCommand.CallCanExecuteChanged">
+            <summary>
+            CanExecuteChanged呼び出します。
+            </summary>
+        </member>
+        <member name="T:CoreWpfFramework.Presenters.Core.ChildPagePresenterBaseCore">
+            <summary>
+            Frame を使用して一つのページを読み込むビュー持つページと一つのビューモデルを管理するプレゼンターの基本クラスです。
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.Core.ChildPagePresenterBaseCore.Parent">
+            <summary>
+            親Presenter Frame
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.Core.ChildPagePresenterBaseCore.Initialize">
+            <summary>
+            初期化処理
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.Core.ChildPagePresenterBaseCore.Cleanup">
+            <summary>
+            クリーンアップ
+            </summary>
+        </member>
+        <member name="T:CoreWpfFramework.Presenters.Core.ParentPresenterBaseCore">
+            <summary>
+            Frameによる子コントロール入れ替えナビゲーション用クラス
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.Core.ParentPresenterBaseCore.CurrentChild">
+            <summary>
+            現在のページ
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.Core.ParentPresenterBaseCore.Children">
+            <summary>
+            子プレゼンター 
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.Core.ParentPresenterBaseCore.AddChild(System.Type,CoreWpfFramework.Presenters.Core.ChildPagePresenterBaseCore)">
+            <summary>
+            子Presenterを追加
+            </summary>
+            <param name="key">キー</param>
+            <param name="child">子Presenter</param>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.Core.ParentPresenterBaseCore.RemoveChild(System.Type)">
+            <summary>
+            子Presenterを解除
+            </summary>
+            <param name="key">キー</param>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.Core.ParentPresenterBaseCore.Initialize">
+            <summary>
+            初期化処理
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.Core.ParentPresenterBaseCore.Cleanup">
+            <summary>
+            クリーンアップ
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.Core.PresenterBaseCore.UIThreadTaskScheduler">
+            <summary>
+            UIスレッドのタスクスケジューラー
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.Core.PresenterBaseCore.IsEnable">
+            <summary>
+            Presenterが有効かどうか
+            Initializeが呼び出されてからCleanupが呼び出されるまでの間=true
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.Core.PresenterBaseCore.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.Core.PresenterBaseCore.Initialize">
+            <summary>
+            初期化処理
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.Core.PresenterBaseCore.Cleanup">
+            <summary>
+            クリーンアップ
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.Core.PresenterBaseCore.ViewBase">
+            <summary>
+            Viewオブジェクトのアクセサ
+            ジェネリックなしインターフェース用
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.Core.PresenterBaseCore.ViewModelBase">
+            <summary>
+            ViewModelオブジェクトのアクセサ
+            ジェネリックなしインターフェース用
+            </summary>
+        </member>
+        <member name="T:CoreWpfFramework.Presenters.FramePresenterBase`2">
+            <summary>
+            Frameによる子コントロール入れ替えナビゲーション用クラス
+            </summary>
+            <typeparam name="TView">Viewの型</typeparam>
+            <typeparam name="TViewModel">ViewModelの型</typeparam>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.FramePresenterBase`2.IsNavigationStackEnabled">
+            <summary>
+            履歴を使うかどうか
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.FramePresenterBase`2.View">
+            <summary>
+            Viewオブジェクト
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.FramePresenterBase`2.ViewModel">
+            <summary>
+            ViewModelオブジェクト
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.FramePresenterBase`2.Cleanup">
+            <summary>
+            クリーンアップ
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.FramePresenterBase`2.Navigate(System.Uri,System.Object)">
+            <summary>
+            キーを指定して登録された子Presenterへ遷移
+            </summary>
+            <param name="uri">子Presenterのキー</param>
+            <param name="extraData">パラメータ</param>
+            <returns>true:キャンセルしていない、false:キャンセルした</returns>
+        </member>
+        <member name="T:CoreWpfFramework.Presenters.NavigationWindowPresenterBase`2">
+            <summary>
+            Frameによる子コントロール入れ替えナビゲーション用クラス
+            </summary>
+            <typeparam name="TView">Viewの型</typeparam>
+            <typeparam name="TViewModel">ViewModelの型</typeparam>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.NavigationWindowPresenterBase`2.IsNavigationStackEnabled">
+            <summary>
+            履歴を使うかどうか
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.NavigationWindowPresenterBase`2.View">
+            <summary>
+            Viewオブジェクト
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.NavigationWindowPresenterBase`2.ViewModel">
+            <summary>
+            ViewModelオブジェクト
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.NavigationWindowPresenterBase`2.Cleanup">
+            <summary>
+            クリーンアップ
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.NavigationWindowPresenterBase`2.Navigate(System.Uri,System.Object)">
+            <summary>
+            キーを指定して登録された子Presenterへ遷移
+            </summary>
+            <param name="uri">子Presenterのキー</param>
+            <param name="extraData">パラメータ</param>
+            <returns>true:キャンセルしていない、false:キャンセルした</returns>
+        </member>
+        <member name="T:CoreWpfFramework.Presenters.PagePresenterBase`2">
+            <summary>
+            Frame を使用して一つのページを読み込むビュー持つページと一つのビューモデルを管理するプレゼンターの基本クラスです。
+            </summary>
+            <typeparam name="TView">管理するビューのクラスです。</typeparam>
+            <typeparam name="TViewModel">管理するビューモデルのクラスです。</typeparam>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.PagePresenterBase`2.View">
+            <summary>
+            Viewオブジェクト
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.PagePresenterBase`2.ViewModel">
+            <summary>
+            ViewModelオブジェクト
+            </summary>
+        </member>
+        <member name="T:CoreWpfFramework.Presenters.PresenterBase`2">
+            <summary>
+            プレゼンター基底クラス
+            </summary>
+            <typeparam name="TView">Viewオブジェクトの型</typeparam>
+            <typeparam name="TViewModel">ViewModelオブジェクトの型</typeparam>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.PresenterBase`2.View">
+            <summary>
+            Viewオブジェクト
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.Presenters.PresenterBase`2.ViewModel">
+            <summary>
+            ViewModelオブジェクト
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.PresenterBase`2.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.PresenterBase`2.Initialize">
+            <summary>
+            初期化処理
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.Presenters.PresenterBase`2.Cleanup">
+            <summary>
+            クリーンアップ
+            </summary>
+        </member>
+        <member name="T:CoreWpfFramework.ViewModels.ViewModelBase">
+            <summary>
+            ViewModelの基底クラス
+            </summary>
+        </member>
+        <member name="P:CoreWpfFramework.ViewModels.ViewModelBase.HasErrors">
+            <summary>
+            エンティティに検証エラーがあるかどうかを示す値を取得します。
+            エンティティに現在検証エラーがある場合は true、それ以外の場合は false。
+            </summary>
+        </member>
+        <member name="E:CoreWpfFramework.ViewModels.ViewModelBase.ErrorsChanged">
+            <summary>
+             プロパティまたはエンティティ全体で検証エラーが変更されたときに発生します。
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.ViewModels.ViewModelBase.GetErrors(System.String)">
+            <summary>
+            指定したプロパティまたはエンティティ全体の検証エラーを取得します。
+            </summary>
+            <param name="propertyName">
+            検証エラーを取得するプロパティの名前。
+            または、エンティティ レベルのエラーを取得するための null または System.String.Empty。</param>
+            <returns>プロパティまたはエンティティの検証エラー。</returns>
+        </member>
+        <member name="M:CoreWpfFramework.ViewModels.ViewModelBase.AddError(System.String,System.String)">
+            <summary>
+            エラー追加
+            </summary>
+            <param name="propertyName">プロパティ名</param>
+            <param name="message">エラーメッセージ</param>
+        </member>
+        <member name="M:CoreWpfFramework.ViewModels.ViewModelBase.RemoveError(System.String,System.String)">
+            <summary>
+            指定したプロパティの指定したエラーを解除する
+            messageがnullの時はプロパティごとDictionaryから削除する
+            そのプロパティのエラーがすべて解除された場合Dictionaryから除去する
+            </summary>
+            <param name="propertyName">プロパティ名</param>
+            <param name="message">エラーメッセージ</param>
+        </member>
+        <member name="M:CoreWpfFramework.ViewModels.ViewModelBase.ValidateProperty(System.String)">
+            <summary>
+            入力検証
+            </summary>
+            <param name="propertyName">プロパティ名</param>
+        </member>
+        <member name="M:CoreWpfFramework.ViewModels.ViewModelBase.OnPropertyChanged(System.String)">
+            <summary>
+            PropertyChangedイベントを発火する
+            </summary>
+            <param name="propertyname">プロパティ名</param>
+        </member>
+        <member name="E:CoreWpfFramework.ViewModels.ViewModelBase.PropertyChanged">
+            <summary>
+            プロパティ値が変更するときに発生します。
+            </summary>
+        </member>
+        <member name="M:CoreWpfFramework.ViewModels.ViewModelBase.SetProperty``1(``0@,``0,System.String)">
+            <summary>
+            プロパティに値をセットします。
+            </summary>
+            <typeparam name="T">プロパティの型</typeparam>
+            <param name="propertyReference">プロパティの内部変数の参照</param>
+            <param name="value">新しい値</param>
+            <param name="propertyName">プロパティ名</param>
+            <returns>プロパティを変更したかどうか</returns>
+        </member>
+    </members>
+</doc>

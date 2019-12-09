@@ -1,0 +1,232 @@
+﻿<#+
+
+public class ViewModelInfo
+{
+	public string NS;
+	public string ClassName;
+	public string BaseClassName;
+
+	public PropertyInfo[] Properties;
+	public CollectionInfo[] Collections;
+	public CommandInfo[] Commands;
+    public EventInfo[] Events;
+};
+
+public void WriteViewModel(ViewModelInfo vm)
+{
+#>
+
+#pragma warning disable CS1591
+#pragma warning disable SA1600 // ElementsMustBeDocumented
+#pragma warning disable SA1601 // PartialElementsMustBeDocumented
+
+namespace <#= vm.NS #>
+{
+    public partial class <#= vm.ClassName #> : <#= vm.BaseClassName #>
+    {
+<#+
+WriteProperties(vm);
+#>
+    
+<#+
+WriteCollections(vm);
+#>
+    
+<#+
+WriteCommands(vm);
+#>
+
+<#+
+WriteEvents(vm);
+#>
+    }
+}
+
+#pragma warning restore SA1601 // PartialElementsMustBeDocumented
+#pragma warning restore SA1600 // ElementsMustBeDocumented
+#pragma warning restore CS1591
+<#+
+}
+
+public void WriteProperties(ViewModelInfo vm)
+{
+	foreach(var p in vm.Properties)
+	{
+#>
+        partial void On<#= p.name #>Changing(ref <#= p.type #> newValue);
+
+        partial void On<#= p.name #>Changed();
+
+        private <#= p.type #> <#= p.private_name #><#+ if(p.defval!=null){#> = <#= ( (p.defval==string.Empty&&p.type=="string"))?("string.Empty"):(p.defval) #><#+ } #>;
+
+        public <#= p.type #> <#= p.name #>
+        {
+            get { return <#= p.private_name #>; }
+            set
+            {
+                var newValue = value;
+                On<#= p.name #>Changing(ref newValue);
+                if (SetProperty<<#= p.type #>>(ref <#= p.private_name #>, newValue))
+                {
+                    ValidateProperty();
+                    On<#= p.name #>Changed();
+                }
+            }
+        }
+<#+
+	}
+}
+
+
+
+public class PropertyInfo
+{
+ public PropertyInfo(){}
+ public PropertyInfo(string type,string name,string defval)
+ {
+	this.type = type;
+	this.name= name;
+	this.defval = defval;
+    this.private_name = name.Substring(0,1).ToLower()+name.Substring(1);
+ }
+
+ public string type;
+ public string name;
+ public string defval;
+ public string private_name;
+};
+
+public void WriteCollections(ViewModelInfo vm)
+{
+	foreach(var p in vm.Collections)
+	{
+#>
+        partial void On<#= p.name #>Changing(ref ObservableCollection<<#= p.itemType #>> newValue);
+
+        partial void On<#= p.name #>Changed();
+        
+        private ObservableCollection<<#= p.itemType #>> <#= p.private_name #> = new ObservableCollection<<#= p.itemType #>>();
+
+        public ObservableCollection<<#= p.itemType #>> <#= p.name #>
+        {
+            get { return <#= p.private_name #>; }
+            set
+            {
+                var newValue = value;
+                On<#= p.name #>Changing(ref newValue);
+                if (SetProperty<ObservableCollection<<#= p.itemType #>>>(ref <#= p.private_name #>, newValue))
+                {
+                    ValidateProperty();
+                    On<#= p.name #>Changed();
+                }
+            }
+        }
+<#+
+	}
+}
+
+
+
+public class CollectionInfo
+{
+ public CollectionInfo(){}
+ public CollectionInfo(string itemType,string name)
+ {
+	this.itemType = itemType;
+	this.name= name;
+    this.private_name = name.Substring(0,1).ToLower()+name.Substring(1);
+ }
+
+ public string itemType;
+ public string name;
+ public string private_name;
+};
+
+public void WriteCommands(ViewModelInfo vm)
+{
+	foreach(var p in vm.Commands)
+	{
+#>
+        partial void On<#= p.name #>Changing(ref DelegateCommand newValue);
+
+        partial void On<#= p.name #>Changed();
+
+        private DelegateCommand <#= p.private_name #> = new DelegateCommand();
+
+        public DelegateCommand <#= p.name #>
+        {
+            get { return <#= p.private_name #>; }
+            set
+            {
+                var newValue = value;
+                On<#= p.name #>Changing(ref newValue);
+                if (SetProperty<DelegateCommand>(ref <#= p.private_name #>, newValue))
+                {
+                    On<#= p.name #>Changed();
+                }
+            }
+        }
+<#+
+	}
+}
+
+
+
+public class CommandInfo
+{
+ public CommandInfo(){}
+ public CommandInfo(string name)
+ {
+	this.name= name;
+    this.private_name = name.Substring(0,1).ToLower()+name.Substring(1);
+ }
+ public string name;
+ public string private_name;
+};
+
+public class EventInfo
+{
+ public EventInfo(){}
+ public EventInfo(string name)
+ {
+	this.name= name;
+    this.private_name = name.Substring(0,1).ToLower()+name.Substring(1);
+ }
+
+ public string name;
+ public string private_name;
+};
+
+public void WriteEvents(ViewModelInfo vm)
+{
+	foreach(var p in vm.Events)
+	{
+#>
+        partial void On<#= p.name #>Changing(ref RoutedEventHandler newValue);
+
+        partial void On<#= p.name #>Changed();
+        
+        private RoutedEventHandler <#= p.private_name #>;
+
+        
+        public RoutedEventHandler <#= p.name #>
+        {
+            get { return <#= p.private_name #>; }
+            set
+            {
+                var newValue = value;
+                On<#= p.name #>Changing(ref newValue);
+                if(<#= p.private_name #> != newValue)
+                {
+                    <#= p.private_name #> = newValue;
+                    OnPropertyChanged("<#= p.name #>");
+                    On<#= p.name #>Changed();
+                }
+            }
+        }
+        
+<#+
+	}
+}
+
+#>

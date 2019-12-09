@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+        xmlns:vc="clr-namespace:WpfFramework.ValueConverters"
+    >
+    <!-- 
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"        
+    -->
+    <vc:BooleanInvertConverter x:Key="BooleanInvertConverter"></vc:BooleanInvertConverter>
+    <vc:BooleanToVisibleHiddenConverter x:Key="BooleanToVisibleHiddenConverter"></vc:BooleanToVisibleHiddenConverter>
+
+<!--
+    <Thickness x:Key="WindowMargin" >5</Thickness>
+    <Thickness x:Key="ControlMargin" >3</Thickness>
+
+
+    <Style x:Key="ControlBase" TargetType="Control">
+        <Setter Property="Margin" Value="{StaticResource ControlMargin}"></Setter>
+        <Setter Property="MinHeight" Value="23"></Setter>
+        <Setter Property="Height" Value="23"></Setter>
+    </Style>
+
+    <Style TargetType="Label" BasedOn="{StaticResource ControlBase}">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    <Style  TargetType="TextBox"  BasedOn="{StaticResource ControlBase}">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="TextArea" TargetType="TextBox" BasedOn="{StaticResource ControlBase }">
+        <Setter Property="AcceptsReturn" Value="True"></Setter>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"></Setter>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"></Setter>
+        <Setter Property="Height" Value="Auto"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Top"></Setter>
+    
+    </Style>
+    <Style TargetType="PasswordBox" BasedOn="{StaticResource ControlBase}">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    <Style TargetType="Button" BasedOn="{StaticResource ControlBase}">
+        <Setter Property="Width" Value="75"></Setter>
+        <Setter Property="MinWidth" Value="75"></Setter>
+    </Style>
+
+    <Style TargetType="ComboBox" BasedOn="{StaticResource ControlBase}">
+        <Setter Property="MinWidth" Value="75"></Setter>
+    </Style>
+    <Style TargetType="CheckBox" BasedOn="{StaticResource ControlBase}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Height" Value="17"/>
+        <Setter Property="MinHeight" Value="17"/>
+    </Style>
+    -->
+</ResourceDictionary>
+    
+    

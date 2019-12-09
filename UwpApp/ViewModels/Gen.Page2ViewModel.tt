@@ -1,0 +1,41 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#@ include file="$(ProjectDir)..\UwpFramework\Templates\ViewModelTemplate.ttinclude" #>
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using UwpFramework.Commands;
+using UwpFramework.ViewModels;
+using Windows.UI.Xaml;
+<#
+
+ViewModelInfo vminfo = new ViewModelInfo()
+{
+	NS="UwpApp.ViewModels",
+	ClassName="Page2ViewModel",
+	BaseClassName = "ViewModelBase",
+	Properties = new PropertyInfo[]
+	{
+		new PropertyInfo("string","Text",""),
+	},
+	Collections = new CollectionInfo[]
+	{
+    new CollectionInfo("string","InputCollection"),
+	},
+	Commands = new CommandInfo[]
+	{
+		new CommandInfo("SampleCommand"),
+	},
+    Events = new EventInfo[]
+    {
+        new EventInfo("ClickEvent")
+    }
+};
+
+WriteViewModel(vminfo);
+#>

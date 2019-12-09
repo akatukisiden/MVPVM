@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoreWpfApp</name>
+    </assembly>
+    <members>
+        <member name="T:CoreWpfApp.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:CoreWpfApp.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:CoreWpfApp.Views.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:CoreWpfApp.Views.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CoreWpfApp.Views.Page1">
+            <summary>
+            Page1.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            Page1
+            </summary>
+        </member>
+        <member name="M:CoreWpfApp.Views.Page1.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CoreWpfApp.Views.Page2">
+            <summary>
+            Page2.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            Page2
+            </summary>
+        </member>
+        <member name="M:CoreWpfApp.Views.Page2.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

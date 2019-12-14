@@ -9,6 +9,7 @@ using UwpApp.Views;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace UwpApp.Presenters
 {
@@ -30,7 +31,14 @@ namespace UwpApp.Presenters
 
         public void Click(object sender, RoutedEventArgs args)
         {
-            this.Parent.Navigate(typeof(Page2), null);
+            this.Parent.Navigate(typeof(Page2), null,null);
+            // this.Parent.Navigate(typeof(Page2), null, new DrillInNavigationTransitionInfo());
+            // this.Parent.Navigate(typeof(Page2),null, new EntranceNavigationTransitionInfo());
+            // this.Parent.Navigate(typeof(Page2),null, new SuppressNavigationTransitionInfo());
+            
+            // this.Parent.DrillInNavigate();
+            // this.Parent.EntranceNavigate();
+            // this.Parent.SuppressNavigate();
         }
 
         public override void Cleanup()

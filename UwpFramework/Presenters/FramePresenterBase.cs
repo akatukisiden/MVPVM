@@ -79,7 +79,13 @@ namespace UwpFramework.Presenters
         /// <param name="extraData">パラメータ</param>
         /// <returns>true:キャンセルしていない、false:キャンセルした</returns>
         public override bool Navigate(Type key, object extraData = null, NavigationTransitionInfo infoOrverride =null)
-        {
+        { 
+            if(extraData is NavigationTransitionInfo)
+            {
+                throw new ArgumentException("NavigationTransitionInfoオブジェクトは2番目の引数(extraData)ではなく、3番目の引数(infoOrverride)である必要があります。");
+            }
+
+
             return View.Navigate(key, extraData, infoOrverride);
         }
 

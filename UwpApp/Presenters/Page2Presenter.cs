@@ -31,7 +31,7 @@ namespace UwpApp.Presenters
 
         public void Click(object sender, RoutedEventArgs args)
         {
-            //this.Parent.Navigate(typeof(Page1), null);
+            // this.Parent.Navigate(typeof(Page1), null);
             this.Parent.GoBack();
         }
 

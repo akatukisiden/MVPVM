@@ -42,7 +42,7 @@ namespace CoreWpfFramework.Presenters
             set { this.ViewModelBase = value; }
         }
 
-        public FramePresenterBase()
+        protected FramePresenterBase()
         {
             this.ViewModel = new TViewModel();
         }

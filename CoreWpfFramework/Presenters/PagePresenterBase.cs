@@ -16,7 +16,7 @@ namespace CoreWpfFramework.Presenters
         where TView : Page, new()
         where TViewModel : ViewModelBase, new()
     {
-        public PagePresenterBase()
+        protected PagePresenterBase()
         {
             this.ViewModel = new TViewModel();
         }

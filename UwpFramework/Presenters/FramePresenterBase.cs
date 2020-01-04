@@ -42,7 +42,7 @@ namespace UwpFramework.Presenters
             set { this.ViewModelBase = value; }
         }
 
-        public FramePresenterBase()
+        protected FramePresenterBase()
         {
             ViewModel = new TViewModel();
         }

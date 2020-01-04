@@ -35,7 +35,7 @@ namespace UwpFramework.Presenters
             set { this.ViewModelBase = value; }
         }
 
-        public PagePresenterBase()
+        protected PagePresenterBase()
         {
             ViewModel = new TViewModel();
         }

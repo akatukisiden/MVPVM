@@ -26,7 +26,7 @@ namespace CoreWpfFramework.Presenters.Core
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public PresenterBaseCore()
+        protected PresenterBaseCore()
         {
             this.IsEnable = false;
         }

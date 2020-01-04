@@ -42,7 +42,7 @@ namespace CoreWpfFramework.Presenters
             set { this.ViewModelBase = value; }
         }
 
-        public NavigationWindowPresenterBase()
+        protected NavigationWindowPresenterBase()
         {
             this.ViewModel = new TViewModel();
         }

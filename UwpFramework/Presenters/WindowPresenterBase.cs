@@ -10,7 +10,7 @@ namespace UwpFramework.Presenters
 {
     public abstract class WindowPresenterBase
     {
-        public WindowPresenterBase()
+        protected WindowPresenterBase()
         { }
 
         public Window Window { set; get; }

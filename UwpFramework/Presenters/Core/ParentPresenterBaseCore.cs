@@ -44,7 +44,7 @@ namespace UwpFramework.Presenters.Core
             Children.Remove(key);
         }
 
-        public ParentPresenterBaseCore()
+        protected ParentPresenterBaseCore()
         {
             Children = new Dictionary<Type, ChildPagePresenterBaseCore>();
         }
